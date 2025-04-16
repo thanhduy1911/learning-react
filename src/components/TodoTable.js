@@ -11,21 +11,12 @@ function TodoTable(props) {
         </tr>
       </thead>
       <tbody>
-        <TodoRowItem
-          rowNumber={props.todos[0].rowNumber}
-          rowDesc={props.todos[0].rowDesc}
-          rowAssigned={props.todos[0].rowAssigned}
-        />
-        <TodoRowItem
-          rowNumber={props.todos[1].rowNumber}
-          rowDesc={props.todos[1].rowDesc}
-          rowAssigned={props.todos[1].rowAssigned}
-        />
-        <TodoRowItem
-          rowNumber={props.todos[2].rowNumber}
-          rowDesc={props.todos[2].rowDesc}
-          rowAssigned={props.todos[2].rowAssigned}
-        />
+        {props.todos.map(todo => (
+          <TodoRowItem 
+                rowNumber={todo.rowNumber}
+                rowDesc={todo.rowDesc}
+                rowAssigned={todo.rowAssigned}/>
+        ))}
       </tbody>
     </table>
   );
