@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import TodoRowItem from "./components/TodoRowItem";
-import TodoTable from "./components/TodoTable";
-import NewTodoForm from "./components/NewTodoForm";
+import { TodoTable } from "./components/TodoTable";
+import { NewTodoForm } from "./components/NewTodoForm";
 
-function App() {
+export const App = () => {
   const [showAddtodoForm, setShowAddTodoForm] = useState(false);
 
   const [todos, setTodos] = useState([
-    { rowNumber: 1, rowDesc: "Feed puppy", rowAssigned: "User One" },
-    { rowNumber: 2, rowDesc: "Water plants", rowAssigned: "User Two" },
-    { rowNumber: 3, rowDesc: "Make dinner", rowAssigned: "User One" },
-    { rowNumber: 4, rowDesc: "Charge phone battery", rowAssigned: "User One" },
+    { rowNumber: 1, rowDescription: "Feed puppy", rowAssigned: "User One" },
+    { rowNumber: 2, rowDescription: "Water plants", rowAssigned: "User Two" },
+    { rowNumber: 3, rowDescription: "Make dinner", rowAssigned: "User One" },
+    { rowNumber: 4, rowDescription: "Charge phone battery", rowAssigned: "User One" },
   ]);
 
-  const addToDo = (description, assigned) => {
+  const addToDo = (description: string, assigned: string) => {
     let rowNumber = 0;
     if (todos.length > 0) {
       rowNumber = todos[todos.length - 1].rowNumber + 1;
@@ -24,14 +22,14 @@ function App() {
     }
     const newTodo = {
       rowNumber: rowNumber,
-      rowDesc: description,
+      rowDescription: description,
       rowAssigned: assigned,
     };
     setTodos((todos) => [...todos, newTodo]);
     console.log(todos);
   };
 
-  const delTodo = (deleteTodowRowNumber) => {
+  const delTodo = (deleteTodowRowNumber: number) => {
     let filtered = todos.filter(function (value) {
       return value.rowNumber !== deleteTodowRowNumber;
     });
@@ -56,5 +54,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
